@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="{{ page.lang | default: site.lang | default: "en" }}">
+
+{%- include head.html -%}
+
+<body>
+
+  <div class="ui container">
+    <div class="ui menu" style="margin-top:20px">
+      <a class="item">Home</a>
+      <div class="right menu">
+        <a class="item">Help</a>
+      </div>
+    </div>
+
+    <main class="page-content" aria-label="Content">
+      <div class="ui container">
+        <div class="row">
+          <div class="column">
+            <div class="ui message">
+              <h1 class="ui header">Welcome!</h1>
+              <!-- <p>We offer a tons of pdf free to download, just select whatever you want.</p> -->
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- <div class="ui buttons" style="margin-top: 20px">
+        
+        <div class="or" data-text="{{page}}"></div>
+        
+      </div> -->
+
+      <h3 class="ui top attached header">
+        PDF Download Page
+        
+      </h3>
+
+      <div class="ui attached segment">
+        <div class="ui relaxed divided items">
+          {% for file in site.static_files limit:500 %}
+          {% if file.extname == ".pdf" %}
+          <div class="item">
+            <div class="content">
+              <div class="header">
+                <i class="big file pdf outline icon"></i>
+                <a href="{{site.url}}{{site.baseurl}}/assets/pdfs/{{ file.name }}">{{ file.name }}</a>
+              </div>
+              <!-- <div class="description">{{ file.name }}</div> -->
+              <div class="extra" style="padding-top: 10px">
+                <button class="ui mini primary basic button">
+                  <a href="{{site.url}}{{site.baseurl}}/assets/pdfs/{{ file.name }}">
+                    <i class="download icon"></i>
+                    Download
+                  </a>
+                </button>
+              </div>
+            </div>
+          </div>
+          {% endif %}
+          {% endfor %}
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.3/semantic.min.js"></script>
+</body>
+</html>
